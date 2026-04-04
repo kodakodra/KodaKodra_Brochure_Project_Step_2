@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodaKodra — Full-Stack PHP & Laravel Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* ===========================
+           CSS Custom Properties
+        =========================== */
+        :root {
+            --clr-bg: #0d0d0d;
+            --clr-surface: #141414;
+            --clr-border: #222;
+            --clr-accent: #e8c84a;
+            --clr-accent-hover: #f0d876;
+            --clr-text: #e0e0e0;
+            --clr-muted: #888;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+
+        /* ===========================
+           Base
+        =========================== */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--clr-bg); color: var(--clr-text); font-family: var(--font-mono); margin: 0; }
+        a { color: var(--clr-accent); text-decoration: none; }
+        a:hover { color: var(--clr-accent-hover); }
+        section { padding: 80px 0; border-bottom: 1px solid var(--clr-border); }
+
+        /* ===========================
+           Navbar
+        =========================== */
+        .navbar { background-color: var(--clr-surface); border-bottom: 1px solid var(--clr-border); padding: 16px 0; }
+        .navbar-brand { font-size: 1.4rem; font-weight: bold; color: var(--clr-accent) !important; letter-spacing: 2px; }
+        .nav-link { color: var(--clr-text) !important; margin-left: 16px; font-size: 0.85rem; letter-spacing: 1px; }
+        .nav-link:hover, .nav-link.active { color: var(--clr-accent) !important; }
+        .navbar-toggler { border-color: var(--clr-border); }
+        .navbar-toggler-icon { filter: invert(1); }
+
+        /* ===========================
+           Hero
+        =========================== */
+        #hero { min-height: 100vh; display: flex; align-items: center; border-bottom: 1px solid var(--clr-border); padding: 120px 0 80px; }
+        .hero-label { font-size: 0.8rem; letter-spacing: 3px; color: var(--clr-accent); text-transform: uppercase; margin-bottom: 16px; }
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: bold; line-height: 1.1; margin-bottom: 24px; }
+        .hero-title span { color: var(--clr-accent); }
+        .hero-sub { font-size: 1rem; color: var(--clr-muted); max-width: 520px; line-height: 1.7; margin-bottom: 40px; }
+        .btn-accent { background-color: var(--clr-accent); color: #0d0d0d; border: none; padding: 12px 32px; font-family: var(--font-mono); font-weight: bold; letter-spacing: 1px; font-size: 0.85rem; text-transform: uppercase; }
+        .btn-accent:hover { background-color: var(--clr-accent-hover); color: #0d0d0d; }
+        .btn-outline-accent { border: 1px solid var(--clr-accent); color: var(--clr-accent); padding: 12px 32px; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; background: transparent; }
+        .btn-outline-accent:hover { background-color: var(--clr-accent); color: #0d0d0d; }
+        .hero-stat { border-left: 2px solid var(--clr-accent); padding-left: 16px; }
+        .hero-stat .num { font-size: 1.8rem; font-weight: bold; color: var(--clr-accent); line-height: 1; }
+        .hero-stat .label { font-size: 0.75rem; color: var(--clr-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* ===========================
+           Section Headers
+        =========================== */
+        .section-label { font-size: 0.75rem; letter-spacing: 3px; color: var(--clr-accent); text-transform: uppercase; margin-bottom: 8px; }
+        .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: bold; margin-bottom: 16px; }
+        .section-sub { color: var(--clr-muted); font-size: 0.88rem; margin-bottom: 40px; }
+
+        /* ===========================
+           Snapshot Cards
+        =========================== */
+        .snapshot-card { background-color: var(--clr-surface); border: 1px solid var(--clr-border); padding: 32px; height: 100%; display: flex; flex-direction: column; }
+        .snapshot-card:hover { border-color: var(--clr-accent); }
+        .snapshot-icon { font-size: 1.4rem; color: var(--clr-accent); margin-bottom: 16px; }
+        .snapshot-card h5 { font-size: 0.95rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 12px; }
+        .snapshot-card p { font-size: 0.82rem; color: var(--clr-muted); line-height: 1.7; flex-grow: 1; }
+        .snapshot-card a { font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 16px; display: inline-block; }
+
+        /* ===========================
+           Footer
+        =========================== */
+        footer { background-color: var(--clr-surface); border-top: 1px solid var(--clr-border); padding: 32px 0; font-size: 0.78rem; color: var(--clr-muted); }
+        footer a { color: var(--clr-muted); margin: 0 8px; }
+        footer a:hover { color: var(--clr-accent); }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">KODAKODRA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <p class="hero-label">Available for freelance &amp; remote work</p>
+                <h1 class="hero-title">Clean code.<br>Simple solutions.<br><span>Things that just work.</span></h1>
+                <p class="hero-sub">Full-stack PHP &amp; Laravel developer building backends, brochure sites, admin tools, e-commerce, and everything in between. No fluff, no unnecessary dependencies.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="contact.html" class="btn btn-accent">Get In Touch</a>
+                    <a href="services.html" class="btn btn-outline-accent">View Services</a>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 mt-md-0">
+                <div class="d-flex flex-column gap-4">
+                    <div class="hero-stat"><div class="num">50+</div><div class="label">Projects Built</div></div>
+                    <div class="hero-stat"><div class="num">6+</div><div class="label">Years Experience</div></div>
+                    <div class="hero-stat"><div class="num">100%</div><div class="label">Remote Ready</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Snapshot -->
+<section id="snapshot">
+    <div class="container">
+        <p class="section-label">Overview</p>
+        <h2 class="section-title">What KodaKodra Offers</h2>
+        <p class="section-sub">A quick look at who I am and what I do. Follow the links to find out more.</p>
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="snapshot-card">
+                    <div class="snapshot-icon"><i class="fas fa-user"></i></div>
+                    <h5>About</h5>
+                    <p>Self-taught developer with 6+ years building real projects and 20+ years of people experience behind the code.</p>
+                    <a href="about.html">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="snapshot-card">
+                    <div class="snapshot-icon"><i class="fas fa-code"></i></div>
+                    <h5>Services</h5>
+                    <p>Web development, PHP &amp; Laravel backends, database design, bug fixing, and project takeovers.</p>
+                    <a href="services.html">View Services <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="snapshot-card">
+                    <div class="snapshot-icon"><i class="fas fa-layer-group"></i></div>
+                    <h5>Tech Stack</h5>
+                    <p>PHP, Laravel, MySQL, Bootstrap, JavaScript, and more. Clean, practical choices that get the job done.</p>
+                    <a href="about.html#stack">View Stack <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="snapshot-card">
+                    <div class="snapshot-icon"><i class="fas fa-envelope"></i></div>
+                    <h5>Contact</h5>
+                    <p>Open to remote freelance projects, bug fixes, takeovers, and team collaboration. Let's talk.</p>
+                    <a href="contact.html">Get In Touch <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <span>&copy; 2026 KodaKodra. All rights reserved.</span>
+        <div>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
